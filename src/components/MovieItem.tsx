@@ -1,4 +1,10 @@
-import { Card, CardContent, CardMedia, CardActionArea, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  Typography,
+} from "@mui/material";
 import { Movie } from "../types";
 
 interface MovieItemProps {
@@ -7,15 +13,16 @@ interface MovieItemProps {
 
 const MovieItem = ({ movie }: MovieItemProps) => {
   return (
-    <Card>
+    <Card sx={{ maxWidth: 200 }}>
       <CardActionArea>
         <CardMedia
-            image={movie.Poster}
-            title={movie.Title}    
+          sx={{ height: 300 }}
+          image={movie.Poster}
+          title={movie.Title}
         />
         <CardContent>
-        <Typography variant="h5">{movie.Title}</Typography>
-        <Typography variant="body2">{movie.Year}</Typography>
+          <Typography variant="h5">{movie.Title}</Typography>
+          <Typography variant="body2">{movie.Year}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>
