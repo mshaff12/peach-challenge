@@ -6,7 +6,7 @@
     Poster: string;
   }
 
-  export interface MovieDetailsResponse {
+  export interface MovieDetails {
     Title: string;
     Year: string;
     Rated: string;
@@ -30,9 +30,6 @@
     DVD: string;
     BoxOffice: string;
     Production: string;
-    Website: string;
-    Response: string;
-    Error?: string;
   }
 
   export interface Rating {

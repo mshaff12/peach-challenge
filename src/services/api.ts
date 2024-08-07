@@ -11,3 +11,12 @@ export const fetchMovies = (query: string) => {
       },
     });
   };
+
+  export const fetchMovieDetails = (id: string) => {
+    return axios.get(`${BASE_URL}`, {
+      params: {
+        i: id,
+        apikey: API_KEY,
+      },
+    });
+  }
