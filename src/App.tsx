@@ -13,7 +13,7 @@ const App = () => {
       if (response.status === 200) {
         setMovies(response.data.Search);
       } else {
-        console.error(response.data.Error);
+        console.error(response.data.Error); //TODO: Verify this is the response object format
         console.log("test");
       }
     });
