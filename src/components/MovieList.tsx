@@ -1,7 +1,8 @@
 import { Grid, Container } from '@mui/material'
+import { Movie } from '../types';
 
 interface MovieListProps {
-    movies: any[]; // TODO: fix this type from any
+    movies: Movie[]; // TODO: fix this type from any
 }
 
 const MovieList = ({ movies }: MovieListProps) => {

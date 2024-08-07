@@ -1,9 +1,10 @@
 import { Card, CardContent, CardMedia, CardActionArea } from '@mui/material';
+import { Movie } from '../types';
 
 const MovieItem = () => {
 
     interface MovieItemProps {
-        movie: any; //TODO: fix this type from any
+        movie: Movie; //TODO: fix this type from any
     }
 
     const MovieItem = ({ movie }: MovieItemProps) => {
