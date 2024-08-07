@@ -6,7 +6,7 @@
     Poster: string;
   }
 
-  export interface MovieDetails {
+  export interface MovieInfo {
     Title: string;
     Year: string;
     Rated: string;

@@ -3,10 +3,12 @@ import MovieList from "./components/MovieList";
 import { Movie } from "./types";
 import { fetchMovies } from "./services/api";
 import MovieSearch from "./components/MovieSearch";
+import MovieDetails from "./components/MovieDetails";
 
 const App = () => {
 
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [selectedMovie, setSelectedMovie] = useState<string | null>(null);
 
   const handleSearch = (query: string) => {
     fetchMovies(query).then((response) => {
@@ -18,11 +20,18 @@ const App = () => {
       }
     });
   };
+
+  const handleMovieClick = (movieId: string) => {
+    setSelectedMovie(movieId);
+  };
   
   return (
     <div className="App">
       <MovieSearch onSearch={handleSearch} />
-      <MovieList movies={movies} />
+      <MovieList movies={movies} onMovieClick={handleMovieClick} />
+      {selectedMovie && (
+        <MovieDetails movieId={selectedMovie} /> 
+      )}
     </div>
   );
 }
