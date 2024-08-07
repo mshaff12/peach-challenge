@@ -10,10 +10,11 @@ const App = () => {
 
   const handleSearch = (query: string) => {
     fetchMovies(query).then((response) => {
-      if (response.data.response === "True") {
+      if (response.status === 200) {
         setMovies(response.data.Search);
       } else {
         console.error(response.data.Error);
+        console.log("test");
       }
     });
   };
