@@ -4,7 +4,7 @@ import { Movie } from "./types";
 
 const App = () => {
 
-  const [movies, setMovies] = useState<Movie[]>([]); //TODO: fix any type
+  const [movies, setMovies] = useState<Movie[]>([]);
   
   return (
     <div className="App">
