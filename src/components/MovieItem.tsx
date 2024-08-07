@@ -1,9 +1,7 @@
 import {
-  Card,
-  CardContent,
-  CardMedia,
-  CardActionArea,
-  Typography,
+    Card,
+    CardActionArea,
+    CardMedia
 } from "@mui/material";
 import { Movie } from "../types";
 
@@ -18,12 +16,7 @@ const MovieItem = ({ movie }: MovieItemProps) => {
         <CardMedia
           sx={{ height: 300 }}
           image={movie.Poster}
-          title={movie.Title}
         />
-        <CardContent>
-          <Typography variant="h5">{movie.Title}</Typography>
-          <Typography variant="body2">{movie.Year}</Typography>
-        </CardContent>
       </CardActionArea>
     </Card>
   );
