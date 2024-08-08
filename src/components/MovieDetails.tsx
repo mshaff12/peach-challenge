@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchMovieDetails } from "../services/api";
 import { MovieInfo } from "../types";
 import { Container, Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
-import { styled } from '@mui/system';
+import styles from '../App.module.css';
 
 interface MovieDetailsProps {
   movieId: string;
@@ -28,25 +28,10 @@ const MovieDetails = ({ movieId, onAddFavorite, onRemoveFavorite, isFavorite }: 
     return <div>Loading...</div>;
   }
 
-  const StyledContainer = styled(Container)(({ theme }) => ({
-    marginTop: theme.spacing(4),
-  }));
-  
-  const StyledCard = styled(Card)(() => ({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  }));
-  
-  const StyledMedia = styled(CardMedia)(() => ({
-    width: 200,
-    height: 300,
-  }));
-
   return (
-    <StyledContainer>
-      <StyledCard>
-        <StyledMedia image={details.Poster} title={details.Title} />
+    <Container className={styles['movie-details-container']}>
+      <Card className={styles['movie-details-card']}>
+        <CardMedia className={styles['movie-details-media']} image={details.Poster} title={details.Title} />
         <CardContent>
           <Typography variant="h5">{details.Title}</Typography>
           <Typography variant="body2" color="textSecondary">{details.Plot}</Typography>
@@ -63,8 +48,8 @@ const MovieDetails = ({ movieId, onAddFavorite, onRemoveFavorite, isFavorite }: 
             </Button>
           )}
         </CardContent>
-      </StyledCard>
-    </StyledContainer>
+      </Card>
+    </Container>
   );
 };
 

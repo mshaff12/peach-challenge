@@ -1,9 +1,6 @@
-import {
-    Card,
-    CardActionArea,
-    CardMedia
-} from "@mui/material";
+import { Card, CardActionArea, CardMedia } from "@mui/material";
 import { Movie } from "../types";
+import styles from '../App.module.css';
 
 interface MovieItemProps {
   movie: Movie;
@@ -12,12 +9,9 @@ interface MovieItemProps {
 
 const MovieItem = ({ movie, onClick }: MovieItemProps) => {
   return (
-    <Card sx={{ maxWidth: 200 }} onClick={onClick}>
+    <Card className={styles['movie-item-card']} onClick={onClick}>
       <CardActionArea>
-        <CardMedia
-          sx={{ height: 300 }}
-          image={movie.Poster}
-        />
+        <CardMedia className={styles['movie-item-media']} image={movie.Poster} />
       </CardActionArea>
     </Card>
   );

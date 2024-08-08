@@ -1,18 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import MovieList from "./components/MovieList";
 import { Movie } from "./types";
 import { fetchMovies } from "./services/api";
 import MovieSearch from "./components/MovieSearch";
 import MovieDetails from "./components/MovieDetails";
-import {
-  Container,
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-} from "@mui/material";
-import { styled } from "@mui/system";
+import { Container, AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import styles from './App.module.css';
 import MovieFavorites from "./components/MovieFavorites";
 
 const App = () => {
@@ -21,26 +14,12 @@ const App = () => {
   const [favorites, setFavorites] = useState<Movie[]>([]);
   const [view, setView] = useState<"movies" | "favorites">("movies");
 
-  const StyledAppBar = styled(AppBar)(({ theme }) => ({
-    marginBottom: theme.spacing(4),
-  }));
-
-  const HeaderButtons = styled(Box)(({ theme }) => ({
-    display: "flex",
-    gap: theme.spacing(2),
-    marginLeft: theme.spacing(2),
-  }));
-
-  const MainContainer = styled(Container)(({ theme }) => ({
-    paddingTop: theme.spacing(4),
-  }));
-
   const handleSearch = (query: string) => {
     fetchMovies(query).then((response) => {
       if (response.status === 200) {
         setMovies(response.data.Search);
       } else {
-        console.error(response.data.Error); //TODO: Verify this is the response object format
+        console.error(response.data.Error);
       }
     });
   };
@@ -67,13 +46,13 @@ const App = () => {
   };
 
   return (
-    <MainContainer>
-      <StyledAppBar position="static">
+    <Container className={styles['main-container']}>
+      <AppBar position="static" className={styles['app-bar']}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             PEACHFLIX
           </Typography>
-          <HeaderButtons>
+          <Box className={styles['header-buttons']}>
             <Button
               variant="contained"
               color={view === "movies" ? "primary" : "inherit"}
@@ -88,10 +67,10 @@ const App = () => {
             >
               Favorites
             </Button>
-          </HeaderButtons>
+          </Box>
           <MovieSearch onSearch={handleSearch} />
         </Toolbar>
-      </StyledAppBar>
+      </AppBar>
       {view === "movies" ? (
         <MovieList movies={movies} onMovieClick={handleMovieClick} />
       ) : (
@@ -100,13 +79,15 @@ const App = () => {
           onMovieClick={handleMovieClick}
         />
       )}
-      {selectedMovie && <MovieDetails 
-         movieId={selectedMovie}
-         onAddFavorite={handleAddFavorite}
-         onRemoveFavorite={handleRemoveFavorite}
-         isFavorite={isFavorite(selectedMovie)}
-      />}
-    </MainContainer>
+      {selectedMovie && (
+        <MovieDetails 
+          movieId={selectedMovie}
+          onAddFavorite={handleAddFavorite}
+          onRemoveFavorite={handleRemoveFavorite}
+          isFavorite={isFavorite(selectedMovie)}
+        />
+      )}
+    </Container>
   );
 };
 
