@@ -62,6 +62,10 @@ const App = () => {
     setSelectedMovie(null);
   };
 
+  const isFavorite = (id: string) => {
+    return favorites.some(movie => movie.imdbID === id);
+  };
+
   return (
     <MainContainer>
       <StyledAppBar position="static">
@@ -93,10 +97,15 @@ const App = () => {
       ) : (
         <MovieFavorites
           favorites={favorites}
-          onRemoveFavorite={handleRemoveFavorite}
+          onMovieClick={handleMovieClick}
         />
       )}
-      {selectedMovie && <MovieDetails movieId={selectedMovie} onAddFavorite={handleAddFavorite}/>}
+      {selectedMovie && <MovieDetails 
+         movieId={selectedMovie}
+         onAddFavorite={handleAddFavorite}
+         onRemoveFavorite={handleRemoveFavorite}
+         isFavorite={isFavorite(selectedMovie)}
+      />}
     </MainContainer>
   );
 };

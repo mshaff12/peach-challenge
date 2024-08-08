@@ -6,14 +6,14 @@ import { Movie } from "../types";
 
 interface FavoritesProps {
   favorites: Movie[];
-  onRemoveFavorite: (id: string) => void;
+  onMovieClick: (id: string) => void;
 }
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
 }));
 
-const Favorites = ({ favorites, onRemoveFavorite }: FavoritesProps) => {
+const Favorites = ({ favorites, onMovieClick }: FavoritesProps) => {
   return (
     <StyledContainer>
       <Grid container spacing={4}>
@@ -21,7 +21,7 @@ const Favorites = ({ favorites, onRemoveFavorite }: FavoritesProps) => {
           <Grid item key={movie.imdbID} xs={12} sm={6} md={4} lg={3}>
             <MovieItem
               movie={movie}
-              onClick={() => onRemoveFavorite(movie.imdbID)}
+              onClick={() => onMovieClick(movie.imdbID)}
             />
           </Grid>
         ))}

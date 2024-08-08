@@ -7,9 +7,11 @@ import { styled } from '@mui/system';
 interface MovieDetailsProps {
   movieId: string;
   onAddFavorite: (movie: MovieInfo) => void;
+  onRemoveFavorite: (id: string) => void;
+  isFavorite: boolean;
 }
 
-const MovieDetails = ({ movieId, onAddFavorite }: MovieDetailsProps) => {
+const MovieDetails = ({ movieId, onAddFavorite, onRemoveFavorite, isFavorite }: MovieDetailsProps) => {
   const [details, setDetails] = useState<MovieInfo | null>(null);
 
   useEffect(() => {
@@ -51,14 +53,19 @@ const MovieDetails = ({ movieId, onAddFavorite }: MovieDetailsProps) => {
           <Typography variant="body2">Released: {details.Released}</Typography>
           <Typography variant="body2">Rating: {details.imdbRating}</Typography>
           <Typography variant="body2">Genre: {details.Genre}</Typography>
-          <Button variant="contained" color="primary" onClick={() => onAddFavorite(details)}>
-            Add to Favorites
-          </Button>
+          {isFavorite ? (
+            <Button variant="contained" color="secondary" onClick={() => onRemoveFavorite(details.imdbID)}>
+              Remove from Favorites
+            </Button>
+          ) : (
+            <Button variant="contained" color="primary" onClick={() => onAddFavorite(details)}>
+              Add to Favorites
+            </Button>
+          )}
         </CardContent>
       </StyledCard>
     </StyledContainer>
   );
-
 };
 
 export default MovieDetails;
