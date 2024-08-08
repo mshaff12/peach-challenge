@@ -4,8 +4,15 @@ import { Movie } from "./types";
 import { fetchMovies } from "./services/api";
 import MovieSearch from "./components/MovieSearch";
 import MovieDetails from "./components/MovieDetails";
-import { Container, AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
-import styles from './App.module.css';
+import {
+  Container,
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+} from "@mui/material";
+import styles from "./App.module.css";
 import MovieFavorites from "./components/MovieFavorites";
 
 const App = () => {
@@ -42,17 +49,17 @@ const App = () => {
   };
 
   const isFavorite = (id: string) => {
-    return favorites.some(movie => movie.imdbID === id);
+    return favorites.some((movie) => movie.imdbID === id);
   };
 
   return (
-    <Container className={styles['main-container']}>
-      <AppBar position="static" className={styles['app-bar']}>
+    <Container className={styles["main-container"]}>
+      <AppBar position="static" className={styles["app-bar"]}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             PEACHFLIX
           </Typography>
-          <Box className={styles['header-buttons']}>
+          <Box className={styles["header-buttons"]}>
             <Button
               variant="contained"
               color={view === "movies" ? "primary" : "inherit"}
@@ -74,13 +81,10 @@ const App = () => {
       {view === "movies" ? (
         <MovieList movies={movies} onMovieClick={handleMovieClick} />
       ) : (
-        <MovieFavorites
-          favorites={favorites}
-          onMovieClick={handleMovieClick}
-        />
+        <MovieFavorites favorites={favorites} onMovieClick={handleMovieClick} />
       )}
       {selectedMovie && (
-        <MovieDetails 
+        <MovieDetails
           movieId={selectedMovie}
           onAddFavorite={handleAddFavorite}
           onRemoveFavorite={handleRemoveFavorite}

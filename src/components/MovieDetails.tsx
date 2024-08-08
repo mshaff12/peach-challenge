@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { fetchMovieDetails } from "../services/api";
 import { MovieInfo } from "../types";
-import { Container, Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
-import styles from '../App.module.css';
+import {
+  Container,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+} from "@mui/material";
+import styles from "../App.module.css";
 
 interface MovieDetailsProps {
   movieId: string;
@@ -11,7 +18,12 @@ interface MovieDetailsProps {
   isFavorite: boolean;
 }
 
-const MovieDetails = ({ movieId, onAddFavorite, onRemoveFavorite, isFavorite }: MovieDetailsProps) => {
+const MovieDetails = ({
+  movieId,
+  onAddFavorite,
+  onRemoveFavorite,
+  isFavorite,
+}: MovieDetailsProps) => {
   const [details, setDetails] = useState<MovieInfo | null>(null);
 
   useEffect(() => {
@@ -29,21 +41,35 @@ const MovieDetails = ({ movieId, onAddFavorite, onRemoveFavorite, isFavorite }: 
   }
 
   return (
-    <Container className={styles['movie-details-container']}>
-      <Card className={styles['movie-details-card']}>
-        <CardMedia className={styles['movie-details-media']} image={details.Poster} title={details.Title} />
+    <Container className={styles["movie-details-container"]}>
+      <Card className={styles["movie-details-card"]}>
+        <CardMedia
+          className={styles["movie-details-media"]}
+          image={details.Poster}
+          title={details.Title}
+        />
         <CardContent>
           <Typography variant="h5">{details.Title}</Typography>
-          <Typography variant="body2" color="textSecondary">{details.Plot}</Typography>
+          <Typography variant="body2" color="textSecondary">
+            {details.Plot}
+          </Typography>
           <Typography variant="body2">Released: {details.Released}</Typography>
           <Typography variant="body2">Rating: {details.imdbRating}</Typography>
           <Typography variant="body2">Genre: {details.Genre}</Typography>
           {isFavorite ? (
-            <Button variant="contained" color="secondary" onClick={() => onRemoveFavorite(details.imdbID)}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => onRemoveFavorite(details.imdbID)}
+            >
               Remove from Favorites
             </Button>
           ) : (
-            <Button variant="contained" color="primary" onClick={() => onAddFavorite(details)}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => onAddFavorite(details)}
+            >
               Add to Favorites
             </Button>
           )}
