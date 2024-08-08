@@ -1,6 +1,8 @@
 /* App styles */
 .app-bar {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
   }
   
   .header-buttons {

@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# PEACHFLIX Movie Library Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+PEACHFLIX is a simple movie library application developed as a take-home exercise. The application allows users to search for movies, view detailed information about selected movies, and manage a personal list of favorite movies. This project uses React, TypeScript, and Material-UI for the frontend, and fetches movie data from the OMDB API.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Search Movies**: Users can search for movies by their title.
+- **View Movie Details**: Users can click on a movie to view more detailed information, including the title, description, release date, rating, and poster.
+- **Favorites List**: Users can add or remove movies from their personal favorites list, stored in local storage.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technical Choices
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React**: Chosen for its component-based architecture and state management capabilities.
+- **TypeScript**: Used for type safety and better code maintainability.
+- **Material-UI**: Utilized for consistent and responsive UI components.
+- **Formik**: Used for managing the movie search form.
+- **OMDB API**: Used as the source of movie data.
 
-### `npm test`
+## Code Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `App.tsx`: The main component that handles the view switching between movies and favorites, and manages the state.
+- `MovieSearch.tsx`: A component for the search bar, implemented with Formik.
+- `MovieList.tsx`: A component that displays a list of movies based on the search query.
+- `MovieItem.tsx`: A component that displays individual movie items in the list.
+- `MovieDetails.tsx`: A component that shows detailed information about a selected movie.
+- `MovieFavorites.tsx`: A component that displays the list of favorite movies.
+- `api.ts`: Contains functions for fetching data from the OMDB API.
+- `types.ts`: Defines TypeScript interfaces for movie data.
 
-### `npm run build`
+## Areas for Improvement
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Given more time, the following improvements could be made:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Yup Validation**: Add Yup validation to the Formik form in `MovieSearch` to ensure proper input handling and validation.
+- **Styling Enhancements**: Refine the styling to closely match the provided Figma designs, for a more polished and visually appealing UI.
+- **Error Handling**: Improve error handling to provide better feedback to users in case of API errors or network issues.
+- **Testing**: Add unit tests and integration tests to ensure the reliability and correctness of the application.
