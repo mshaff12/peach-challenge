@@ -1,9 +1,17 @@
 import { Field, Form, Formik } from "formik";
 import { Button, TextField, Container } from '@mui/material';
+import { styled } from '@mui/system';
 
 interface MovieSearchProps {
   onSearch: (query: string) => void;
 }
+
+const StyledForm = styled(Form)(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+  }));
 
 const MovieSearch = ({ onSearch }: MovieSearchProps) => {
     return (
@@ -16,7 +24,7 @@ const MovieSearch = ({ onSearch }: MovieSearchProps) => {
             }}
           >
             {() => (
-              <Form>
+              <StyledForm>
                 <Field
                   name="query"
                   as={TextField}
@@ -26,7 +34,7 @@ const MovieSearch = ({ onSearch }: MovieSearchProps) => {
                 <Button type="submit" variant="contained" color="primary">
                   Search
                 </Button>
-              </Form>
+              </StyledForm>
             )}
           </Formik>
         </Container>

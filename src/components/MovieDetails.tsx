@@ -6,9 +6,10 @@ import { styled } from '@mui/system';
 
 interface MovieDetailsProps {
   movieId: string;
+  onAddFavorite: (movie: MovieInfo) => void;
 }
 
-const MovieDetails = ({ movieId }: MovieDetailsProps) => {
+const MovieDetails = ({ movieId, onAddFavorite }: MovieDetailsProps) => {
   const [details, setDetails] = useState<MovieInfo | null>(null);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const MovieDetails = ({ movieId }: MovieDetailsProps) => {
           <Typography variant="body2">Released: {details.Released}</Typography>
           <Typography variant="body2">Rating: {details.imdbRating}</Typography>
           <Typography variant="body2">Genre: {details.Genre}</Typography>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={() => onAddFavorite(details)}>
             Add to Favorites
           </Button>
         </CardContent>
