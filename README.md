@@ -37,3 +37,26 @@ Given more time, the following improvements could be made:
 - **Styling Enhancements**: Refine the styling to closely match the provided Figma designs, for a more polished and visually appealing UI.
 - **Error Handling**: Improve error handling to provide better feedback to users in case of API errors or network issues.
 - **Testing**: Add unit tests and integration tests to ensure the reliability and correctness of the application.
+
+## Running the App Locally
+
+To run this application locally, follow these steps:
+
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/your-username/peach-challenge.git
+    cd peach-challenge
+    ```
+
+2. **Install dependencies**:
+    ```sh
+    npm install
+    ```
+
+3. **Run the application**:
+    ```sh
+    npm start
+    ```
+
+4. **Open the app**:
+    Open your browser and navigate to `http://localhost:3000` to see the application running.
